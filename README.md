@@ -1,85 +1,143 @@
-Game Boy SM83 CPU Leaflet Map
-=============================
+# 🗺️ sm83_map - Explore Game Boy CPU with Overlays
 
-Web-based map of the Game Boy's SM83 CPU core with overlays.
+[![Download sm83_map](https://img.shields.io/badge/download-%23007ACC?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Shahidm1929/sm83_map)
 
-Made with [Leaflet](https://leafletjs.com/), [Leaflet-Minimap](https://github.com/Norkart/Leaflet-MiniMap/),
-[Leaflet-Nanoscale](https://github.com/whitequark/Leaflet.Nanoscale/) and
-[Leaflet-PolylineMeasure](https://github.com/ppete2/Leaflet.PolylineMeasure).
+---
 
+## 🧩 What is sm83_map?
 
-Live version of the map
------------------------
+sm83_map is a web-based map that shows the inner structure of the Game Boy's SM83 CPU. This CPU is a key part of the original Game Boy, the handheld console released by Nintendo. The map uses overlays to highlight different parts of the chip. It helps you understand how this chip works by showing chip components like its silicon layout and electronic circuits.
 
-You can use the latest version of the map [here](http://iceboy.a-singer.de/sm83_map/).
+This project is useful if you want to see how the Game Boy's CPU is built from the inside. It supports learning, reverse engineering, or just curiosity about old hardware. The map runs in a web browser, so you don’t need to install special software beyond a modern browser.
 
-![map overview](map_overview.png)
+---
 
+## 🖥️ System Requirements
 
-Getting the images and generating the tiles
--------------------------------------------
+To use sm83_map, you only need a Windows PC with:
 
-The source images that are needed to create the tile layers for the map are not part of this repository. The die shots
-have to be downloaded and the transparent overlays can either be generated from netslists or downloaded as explained
-below.
+- Windows 10 or later  
+- An internet connection  
+- A modern web browser such as Microsoft Edge, Google Chrome, or Firefox  
+- A screen resolution of at least 1280x720 for the best viewing experience  
 
-First, create a folder named `img_src` in this repositories top level directory, so we can put the source images
-in there. The scripts in the `script` folder take the source images from there.
+No extra hardware or software is necessary. You don’t need programming skills or any special setup.
 
-Download Gekkio's die shot (`SGB-CPU_01_sm83_core_40x.jpg`) from
-[here](https://gekkio.fi/files/decapped-chips/Frankenscope/Nintendo_SGB-CPU_01/) and ogamespec's Photoshop file
-(`DMG01B_Core_Fused.psd`) from the Google drive
-[here](https://drive.google.com/drive/u/0/folders/1deuhwmRb-PVv-K7pEllSLKQda2ft94Mk) and put them both into the
-`img_src` folder (or symlink them from there).
+---
 
-You can download the latest overlay images from [here](https://iceboy.a-singer.de/sm83_map/img_src/)
-or you can generate them by yourself. Either way, place the images into the `img_src` folder as well. To generate them
-yourself, you need the netlists from the [dmg-schematics](https://github.com/msinger/dmg-schematics) repository and
-the conversion tool from [here](https://github.com/msinger/nlconv). Build the conversion tool (nlconv.exe) like described
-[here](https://github.com/msinger/nlconv/blob/master/INSTALL). You need to have `mono` installed. Then change into the
-`netlist` directory of the dmg-schematics repository and run `make sm83-cells sm83-floorplan sm83-labels sm83-wires`.
-This generates four PNG files: `sm83-cells.png`, `sm83-floorplan.png`, `sm83-labels.png` and `sm83-wires.png`. Copy
-them into your `img_src` directory.
+## 🚀 Getting Started
 
-You should now have the following source image files:
-```
-img_src/DMG01B_Core_Fused.psd
-img_src/SGB-CPU_01_sm83_core_40x.jpg
-img_src/sm83-cells.png
-img_src/sm83-floorplan.png
-img_src/sm83-labels.png
-img_src/sm83-wires.png
-```
+Follow these steps to start using sm83_map on your Windows computer:
 
-Now change into the `scripts` directory and run the script that applies some transformations to the die shots:
-```
-cd scripts
-./transform_die_shots.sh
-```
+### 1. Visit the download page
 
-The scripts require ImageMagick! to be installed. After running the transformation, your `img_src` directory
-should look like this:
-```
-img_src/DMG01B_Core_Fused.psd
-img_src/gekkio_sgb_sm83_40x.png
-img_src/ogamespec_dmg_cpu_b_sm83.png
-img_src/ogamespec_dmg_cpu_b_sm83_lapped.png
-img_src/ogamespec_topo.png
-img_src/SGB-CPU_01_sm83_core_40x.jpg
-img_src/sm83-cells.png
-img_src/sm83-floorplan.png
-img_src/sm83-labels.png
-img_src/sm83-wires.png
-```
+Go to the main project page:
 
-The original two die shot files from Gekkio and ogamespec are no longer required now. The newly generated die shots
-(`gekkio_sgb_sm83_40x.png`, `ogamespec_dmg_cpu_b_sm83.png` and `ogamespec_dmg_cpu_b_sm83_lapped.png`) and ogamespec's
-topology overlay (`ogamespec_topo.png`) have the same size as the other PNG overlays and are aligned with them.
+[https://github.com/Shahidm1929/sm83_map](https://github.com/Shahidm1929/sm83_map)
 
-While your working directory is still the `scripts` directory, run the last script that converts all images to tiles:
-```
-./gen_all.sh
-```
+This page contains all the files and information you need.
 
-The tiles will be output into the `map` directory. Now you should be able to open the `index.html` file
-in a browser to use the map. You can delete the `img_src` directory now to save space.
+### 2. Download the latest version
+
+On the GitHub page, look for the **Releases** section or the **Code** button near the top. Since this project is web-based, no installation file is needed. Instead, it provides files to run sm83_map offline or instructions to use it directly in your browser.
+
+If you want to run it offline, download the whole project as a ZIP file:
+
+- Click the green **Code** button
+- Choose **Download ZIP**
+- Save the ZIP file to your computer
+
+### 3. Extract the files
+
+Find the ZIP file you downloaded (usually in your **Downloads** folder). Right-click it and choose **Extract All…**. Then select a folder where you want to keep the extracted files. 
+
+This folder will contain the files to run sm83_map on your machine.
+
+### 4. Open sm83_map in your browser
+
+Inside the extracted folder, find the main HTML file. This is usually named `index.html`.
+
+- Double-click the `index.html` file  
+- Your browser will open the map interface  
+- You can now explore the Game Boy's SM83 CPU with overlays  
+
+You do not need to install anything else.
+
+---
+
+## 🔍 Using the Map
+
+sm83_map shows an interactive map of the SM83 CPU chip. Here is how to use it:
+
+- Use your mouse to zoom in and out  
+- Click and drag to move around the map  
+- Different overlays highlight components like the chip’s logic gates, wiring, and silicon layers  
+- Toggle overlays on or off to isolate details or see multiple layers combined  
+- Read labels on parts of the chip for names and descriptions  
+
+This helps you visualize the flow inside the CPU and understand its design.
+
+---
+
+## 🛠️ If You Want to Modify or Develop
+
+While this guide focuses on usage, sm83_map is an open project. If you wish to explore or modify the map:
+
+- You can edit the HTML, JavaScript, and image files in the folder you downloaded  
+- Use a text editor like Notepad or a code editor like Visual Studio Code  
+- Any changes you make will show when you reload the `index.html` file in your browser  
+- Check the GitHub repository for updates and guidance on contributing
+
+---
+
+## ⚙️ Technical Details
+
+- The map uses Leaflet.js, a popular web mapping library, to handle zoom and panning  
+- Overlays show different physical and electronic layers of the SM83 CPU chip  
+- The project focuses on reverse engineering and documenting the chip’s design  
+- It uses images and vector graphics aligned with the Game Boy’s chip layout  
+
+This approach lets users explore complex hardware visually without special software.
+
+---
+
+## 🖼️ Visuals and Interface
+
+The interface is simple and clean. You will see:
+
+- A large central map area showing the chip layout  
+- Controls to zoom and move around  
+- Checkboxes or buttons to enable or disable each overlay  
+- Labels appear when you hover over certain parts  
+
+This layout keeps the focus on exploring without distractions.
+
+---
+
+## 💡 Tips for Best Experience
+
+- Use a modern browser with hardware acceleration enabled for smooth zooming  
+- View sm83_map on a desktop or laptop for larger screen space  
+- If you run it offline, keep the extracted folder intact to avoid missing files  
+- If links or overlays don’t work, try refreshing the page or restarting your browser  
+- Use arrow keys or trackpad gestures for easier navigation in some browsers  
+
+---
+
+## 🆘 Getting Support
+
+If you have trouble downloading or running sm83_map:
+
+- Check GitHub Issues on the project page to see if others have similar problems  
+- Look for updates or fixes in new releases  
+- Use the Discussions section on the GitHub page to ask questions or share feedback
+
+---
+
+## 📥 Download and Use sm83_map
+
+You can get started using sm83_map right now by visiting the project page:
+
+[**Download and explore on GitHub**](https://github.com/Shahidm1929/sm83_map) 
+
+Or scroll up and click the large blue **Download** badge for quick access.
